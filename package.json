@@ -5,26 +5,61 @@
   "main": "index.js",
   "scripts": {
     "start": "cross-env PORT=10888 react-scripts start",
-    "build": "react-scripts build"
+    "build": "react-scripts build",
+    "now-build": "react-scripts build"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
+  "babel": {
+    "presets": [
+      "react-app"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ]
+    ]
+  },
   "devDependencies": {
     "cross-env": "^5.2.1",
     "react-hot-loader": "^4.12.15",
-    "react-scripts": "^3.2.0"
+    "react-scripts": "^3.2.0",
+    "mobx-react-devtools": "^6.1.1",
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-decorators": "^7.4.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-transform-react-jsx": "^7.3.0",
+    "@babel/preset-env": "^7.5.5",
+    "autoprefixer": "^9.6.1",
+    "babel-eslint": "^10.0.2",
+    "eslint": "^6.5.1",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-config-standard-react": "^9.2.0",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-standard": "^4.0.1"
   },
   "dependencies": {
+    "@babel/plugin-proposal-decorators": "^7.6.0",
     "@vkontakte/icons": "^1.10.2",
     "@vkontakte/vk-connect": "^1.6.5",
     "@vkontakte/vkui": "^2.32.3",
-    "babel-eslint": "^10.0.3",
     "chalk": "^2.4.2",
     "core-js": "^3.3.2",
+    "mobx": "^5.14.2",
+    "mobx-react": "^6.1.4",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "react-dom": "^16.10.2",
+    "react-router-dom": "^5.1.2"
   },
   "browserslist": {
     "production": [
