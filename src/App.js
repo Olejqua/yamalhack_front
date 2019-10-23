@@ -5,7 +5,7 @@ import ScreenSpinner from '@vkontakte/vkui/dist/components/ScreenSpinner/ScreenS
 import '@vkontakte/vkui/dist/vkui.css';
 
 import Home from './panels/Home';
-import Persik from './panels/Persik';
+import Events from './panels/Events';
 import Create from './panels/Create';
 
 const App = () => {
@@ -38,7 +38,7 @@ const App = () => {
 	return (
 		<View activePanel={activePanel} popout={popout}>
 			<Home id='home' fetchedUser={fetchedUser} go={go} />
-			<Persik id='persik' go={go} />
+			<Events id='events' go={go} />
 			<Create id='create' go={go} />
 		</View>
 	);

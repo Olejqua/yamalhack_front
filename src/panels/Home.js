@@ -6,73 +6,64 @@ import Button from '@vkontakte/vkui/dist/components/Button/Button';
 import Tabs from '@vkontakte/vkui/dist/components/Tabs/Tabs';
 import TabsItem from '@vkontakte/vkui/dist/components/TabsItem/TabsItem';
 import Group from '@vkontakte/vkui/dist/components/Group/Group';
+import List from '@vkontakte/vkui/dist/components/List/List';
 import Cell from '@vkontakte/vkui/dist/components/Cell/Cell';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import Avatar from '@vkontakte/vkui/dist/components/Avatar/Avatar';
 import FixedLayout from '@vkontakte/vkui/dist/components/FixedLayout/FixedLayout';
 import FormLayout from '@vkontakte/vkui/dist/components/FormLayout/FormLayout';
 import Select from '@vkontakte/vkui/dist/components/Select/Select';
-
+import InfoRow from '@vkontakte/vkui/dist/components/InfoRow/InfoRow';
 import { eventVariable } from '../static/dictionaries';
 
 
 const Home = ({ id, go, fetchedUser }) => {
-	const [activeTab, setActiveTab] = useState('volonture');
-
+	
 	return (
 		<Panel id={id}>
 			<PanelHeader>
 				Меро
 			</PanelHeader>
-			<FormLayout>
-				<Select top="Категория" placeholder="Выберите категорию">
-					{eventVariable.map((category, idx) => (
-						<option
-						value={idx}
-						>
-							{category}
-						</option>
-					))}
-				</Select>
-    	</FormLayout>
+
 			{fetchedUser &&
-			<Group title="User Data Fetched with VK Connect">
+			<Group title="Аккаунт">
 				<Cell
 					before={fetchedUser.photo_200 ? <Avatar src={fetchedUser.photo_200}/> : null}
 					description={fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : ''}
 				>
 					{`${fetchedUser.first_name} ${fetchedUser.last_name}`}
 				</Cell>
+				<List>
+          <Cell>
+            <InfoRow title="Ближайшие мероприятия">
+              Хакатон на полярном круге
+            </InfoRow>
+          </Cell>
+          <Cell>
+            <InfoRow title="Участвовал в">
+              7 мероприятиях
+            </InfoRow>
+          </Cell>
+          <Cell>
+            <InfoRow title="Организовал">
+              3 мероприятия
+            </InfoRow>
+          </Cell>
+        </List>
 			</Group>}
 	
-			<Group title="Navigation Example">
+			<Group>
 				<Div>
-					<Button size="xl" level="2" onClick={go} data-to="persik">
-						Show me the Persik, please
+					<Button size="xl" level="2" onClick={go} data-to="events">
+						Поиск мероприятий
 					</Button>
 				</Div>
 				<Div>
 					<Button size="xl" level="2" onClick={go} data-to="create">
-						Create event
+						Создать мероприятие
 					</Button>
 				</Div>
 			</Group>
-			<FixedLayout vertical="bottom">
-				<Tabs>
-					<TabsItem
-						onClick={() => setActiveTab('volonture')}
-						selected={activeTab === 'volonture'}
-					>
-						Волонтер
-					</TabsItem>
-					<TabsItem
-						onClick={() => setActiveTab('organiser')}
-						selected={activeTab === 'organiser'}
-					>
-						Организатор
-					</TabsItem>
-				</Tabs>
-			</FixedLayout>
 		</Panel>
 	);
 }

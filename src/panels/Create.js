@@ -1,5 +1,5 @@
 import React from 'react';
-import { platform, IOS } from '@vkontakte/vkui';
+import { platform, IOS, View } from '@vkontakte/vkui';
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
 import FormLayout from '@vkontakte/vkui/dist/components/FormLayout/FormLayout';
@@ -8,6 +8,8 @@ import Select from '@vkontakte/vkui/dist/components/Select/Select';
 import Textarea from '@vkontakte/vkui/dist/components/Textarea/Textarea';
 import Button from '@vkontakte/vkui/dist/components/Button/Button';
 import HeaderButton from '@vkontakte/vkui/dist/components/HeaderButton/HeaderButton';
+import Alert from '@vkontakte/vkui/dist/components/Alert/Alert';
+import ModalCard from '@vkontakte/vkui/dist/components/ModalCard/ModalCard';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 
@@ -20,7 +22,7 @@ class Create extends React.Component {
     super(props);
 
     this.state = {
-      purpose: ''
+      purpose: '',
     }
   }
 
@@ -63,7 +65,9 @@ class Create extends React.Component {
           <Input top="Название мероприятия" />
           <Textarea top="Описание" />
           <Input top="Место проведения" />
-          <Button size="xl">Зарегистрировать</Button>
+          <Button size="xl">
+            Зарегистрировать
+          </Button>
         </FormLayout>
       </Panel>
     );
