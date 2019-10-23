@@ -4,54 +4,79 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env PORT=10888 react-scripts start",
-    "build": "react-scripts build",
-    "now-build": "react-scripts build"
+    "clean": "rimraf dist",
+    "build": "better-npm-run build",
+    "build:dev": "better-npm-run build:dev",
+    "start": "better-npm-run start",
+    "prod": "better-npm-run prod"
+  },
+  "betterScripts": {
+    "build": {
+      "command": "npm run clean && webpack",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "build:dev": {
+      "command": "npm run clean && webpack",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    "start": {
+      "command": "babel-node build/dev-server.js",
+      "env": {
+        "NODE_ENV": "development",
+        "sslport": "8443",
+        "port": "10888"
+      }
+    },
+    "prod": {
+      "command": "babel-node build/dev-server.js",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
-  "babel": {
-    "presets": [
-      "react-app"
-    ],
-    "plugins": [
-      [
-        "@babel/plugin-proposal-decorators",
-        {
-          "legacy": true
-        }
-      ]
-    ]
-  },
   "devDependencies": {
-    "cross-env": "^5.2.1",
-    "react-hot-loader": "^4.12.15",
-    "react-scripts": "^3.2.0",
-    "mobx-react-devtools": "^6.1.1",
     "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
+    "@babel/core": "^7.6.4",
     "@babel/node": "^7.5.5",
+    "@babel/plugin-proposal-decorators": "^7.6.0",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/plugin-proposal-decorators": "^7.4.4",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/plugin-transform-react-jsx": "^7.3.0",
-    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
     "autoprefixer": "^9.6.1",
     "babel-eslint": "^10.0.2",
+    "babel-loader": "^8.0.6",
+    "better-npm-run": "^0.1.1",
+    "cross-env": "^5.2.1",
+    "css-loader": "^3.2.0",
     "eslint": "^6.5.1",
     "eslint-config-standard": "^14.1.0",
     "eslint-config-standard-react": "^9.2.0",
     "eslint-plugin-babel": "^5.3.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.16.0",
-    "eslint-plugin-standard": "^4.0.1"
+    "eslint-plugin-standard": "^4.0.1",
+    "mobx-react-devtools": "^6.1.1",
+    "react-hot-loader": "^4.12.15",
+    "react-scripts": "^3.2.0",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.9.0"
   },
   "dependencies": {
-    "@babel/plugin-proposal-decorators": "^7.6.0",
     "@vkontakte/icons": "^1.10.2",
     "@vkontakte/vk-connect": "^1.6.5",
     "@vkontakte/vkui": "^2.32.3",
+    "autobind-decorator": "^2.4.0",
+    "axios": "^0.19.0",
     "chalk": "^2.4.2",
     "core-js": "^3.3.2",
     "mobx": "^5.14.2",
